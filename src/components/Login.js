@@ -1,12 +1,33 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import axios from "axios";
 import "../style.css";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  let navigate = useNavigate();
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    axios.post("http://localhost:4000/api/users/login", {
+      username: username,
+      password: password
+    }).then((res) => {
+      if(res.data.status === "success") {
+        navigate("/");
+        console.log(res.data.data.user)
+      }
+    })
+
+
+    alert("User created")
+    setUsername("");
+    setPassword("");
+
+    e.preventDefault();
+  };
+
 
   return (
     <div className="container">

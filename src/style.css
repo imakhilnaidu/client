@@ -51,3 +51,9 @@ p {
   font-size: 14px;
   margin-left: 10px;
 }
+
+.blb {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(27, 27, 27);
+}
